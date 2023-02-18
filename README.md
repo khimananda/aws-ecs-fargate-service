@@ -1,4 +1,4 @@
-#Following example can be used to launch fargate service
+# Following example can be used to launch fargate service
 - By default this will create capacity provider with 100% fargate_spot
 
 ```
