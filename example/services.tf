@@ -2,8 +2,6 @@ resource "aws_ecs_cluster" "example" {
   name = "example-cluster"
 }
 module "ecs-service" {
-  for_each = local.backend
-
   source        = "/home/khimananda/khim-tf-libraries/aws-ecs-fargate-service"#"s3::/portpro-tf-modules/1.0.23/aws-ecs-fargate-service.zip"
   name          = "fargate-example"
   environment   = terraform.workspace

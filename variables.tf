@@ -123,7 +123,7 @@ variable "type" {
 
 variable "alb_rule_field" {
   type        = string
-  default     = "path-pattern"
+  default     = "host-header"
   description = "The name of the field. Must be one of path-pattern for path based routing or host-header for host based routing."
 }
 
@@ -134,13 +134,13 @@ variable "sg" {
 }
 
 
-variable "alb_suffix_arn" {
+variable "alb_arn" {
   type        = string
   description = "ALB suffix arn for target group alarm."
 }
 
 #######################
-#--- Sonstige Vars ---#
+#--- VPC Vars ---#
 #######################
 
 variable "vpc_id" {
@@ -177,8 +177,8 @@ variable "capacity_provider" {
 variable "autoscaling_target_value" {
   type = map(string)
   default = {
-    cpu    = 50,
-    memory = 70,
+    cpu          = 50,
+    memory       = 70,
     requestCount = 100
   }
 }
@@ -186,4 +186,26 @@ variable "autoscaling_target_value" {
 variable "autoscaling" {
   type    = bool
   default = false
+}
+
+variable "cloudwatch_alarm" {
+  type = map(string)
+  default = {
+    "5xx" = 1
+  }
+}
+
+variable "sns_topic_arn" {
+  type = string
+}
+
+variable "enable_public_endpoint" {
+  type        = bool
+  default     = true
+  description = "This will Create ALB listener Rule and Target group for ECS"
+}
+
+variable "template_suffix" {
+  type = string
+  default="template"
 }
