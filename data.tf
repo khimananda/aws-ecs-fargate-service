@@ -1,4 +1,4 @@
-data "aws_ecs_cluster" "portpro" {
+data "aws_ecs_cluster" "fargate" {
   cluster_name = var.cluster_name
 }
 

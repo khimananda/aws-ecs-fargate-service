@@ -37,7 +37,7 @@ resource "aws_ecs_service" "this" {
   enable_execute_command            = true
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.this.arn
+    target_group_arn = aws_lb_target_group.this[0].arn
     container_name   = var.container["APP_NAME"]
     container_port   = var.container["APP_PORT"]
   }
