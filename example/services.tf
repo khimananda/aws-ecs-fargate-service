@@ -2,7 +2,7 @@ resource "aws_ecs_cluster" "example" {
   name = "example-cluster"
 }
 module "ecs-service" {
-  source        = "/home/khimananda/khim-tf-libraries/aws-ecs-fargate-service"
+  source        = "khimananda/fargate-service/aws"
   name          = "fargate-example"
   environment   = terraform.workspace
   cluster_name  = aws_ecs_cluster.example.cluster_name
